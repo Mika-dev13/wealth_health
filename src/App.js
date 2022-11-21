@@ -1,11 +1,11 @@
-import Hearder from './components/Hearder'
-import TextInput from './components/TextInput'
+import Header from './components/Header'
+import Home from './pages/Home'
 
 function App() {
   return (
     <div className="App">
-      <Hearder />
-      <TextInput />
+      <Header />
+      <Home />
     </div>
   )
 }
