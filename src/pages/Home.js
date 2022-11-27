@@ -8,14 +8,15 @@ import {
   Button,
 } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
+import dayjs from 'dayjs'
 import states from '../data/states'
 import departments from '../data/department'
 
-const initialValues = {
+const employeeInfos = {
   firstName: '',
   lastName: '',
-  dateOfBirth: '',
-  startDate: '',
+  dateOfBirth: null,
+  startDate: null,
   street: '',
   city: '',
   state: '',
@@ -24,15 +25,7 @@ const initialValues = {
 }
 
 function Home() {
-  const [selectedBirthDate, setSelectedBirthDate] = useState(null)
-  const [selectedStartDate, setSelectedStartDate] = useState(null)
-
-  const [values, setValues] = useState(initialValues)
-
-  const [departmentValue, setDepartmentValue] = useState('')
-
-  console.log(values)
-  console.log(departmentValue)
+  const [values, setValues] = useState(employeeInfos)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -42,17 +35,26 @@ function Home() {
     })
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(values)
+    console.log(values.dateOfBirth.format('DD/MM/YYYY'))
+  }
+  //submision
+  //useContext (Recupere un valuer de state Employer (array))
+  // Employer tu y ajouter un nouvelle object de donné setEmployer(...Employer, values)
+  // Open Model
+
   return (
     <Container
       maxWidth="sm"
       sx={{
-        // bgcolor: '#f1f1f1',
         display: 'flex',
         flexDirection: 'column',
         marginTop: '30px',
       }}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <Typography align="center" variant="h4" component="h2" mb={5} mt={3}>
           Create Employee
         </Typography>
@@ -85,20 +87,30 @@ function Home() {
               value={values.lastName}
               onChange={handleInputChange}
             />
+
             <DatePicker
               label="Date of Birth"
               name="dateOfBith"
-              value={selectedBirthDate}
+              minDate={dayjs('01-01-1970')}
+              maxDate={dayjs('12-12-2004')}
+              value={values.dateOfBirth}
               onChange={(newValue) => {
-                setSelectedBirthDate(newValue)
+                setValues({
+                  ...values,
+                  dateOfBirth: newValue,
+                })
               }}
               renderInput={(params) => <TextField {...params} />}
             />
             <DatePicker
               label="Start Date"
-              value={selectedStartDate}
+              name="startDate"
+              value={values.startDate}
               onChange={(newValue) => {
-                setSelectedStartDate(newValue)
+                setValues({
+                  ...values,
+                  startDate: newValue,
+                })
               }}
               renderInput={(params) => <TextField {...params} />}
             />
@@ -125,6 +137,12 @@ function Home() {
             />
             <Autocomplete
               options={states}
+              onChange={(e, value) =>
+                setValues({
+                  ...values,
+                  state: value,
+                })
+              }
               autoHighlight
               getOptionLabel={(option) => option.name}
               renderOption={(props, option) => (
@@ -160,8 +178,12 @@ function Home() {
         <Box padding={'0 8px'} mb={4} mt={1}>
           <Autocomplete
             options={departments}
-            name="department"
-            onChange={(e, value) => setDepartmentValue(value)}
+            onChange={(e, value) =>
+              setValues({
+                ...values,
+                department: value,
+              })
+            }
             autoHighlight
             getOptionLabel={(option) => option.department}
             renderOption={(props, option) => (
@@ -186,7 +208,7 @@ function Home() {
           />
         </Box>
         <Box padding={'0 8px'}>
-          <Button variant="contained" size="large" fullWidth>
+          <Button type="submit" variant="contained" size="large" fullWidth>
             Save
           </Button>
         </Box>

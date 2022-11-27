@@ -1,16 +1,25 @@
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+import './app.css'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers'
+import 'dayjs/locale/fr'
 import CssBaseline from '@mui/material/CssBaseline'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './pages/Home'
+import DenseTable from './pages/Table'
+
+const locale = 'fr'
 
 function App() {
   return (
-    <LocalizationProvider dateAdapter={AdapterMoment}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={locale}>
       <div className="App">
         <CssBaseline />
         <Header />
-        <Home />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/table" element={<DenseTable />} />
+        </Routes>
       </div>
     </LocalizationProvider>
   )

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Typography, Box, AppBar, Toolbar } from '@mui/material'
 import TrendingFlatIcon from '@mui/icons-material/TrendingFlat'
 
@@ -9,7 +10,9 @@ const Header = () => {
         <AppBar position="static" sx={{ p: 4 }}>
           <Toolbar component="nav">
             <Typography component="h1" variant="h4" sx={{ flexGrow: 1 }}>
-              Wealth Health
+              <Link className="logo-link" to="/">
+                Wealth Health
+              </Link>
             </Typography>
             <Box
               sx={{
@@ -17,8 +20,10 @@ const Header = () => {
                 alignItems: 'center',
               }}
             >
-              <Typography mr={2}>View current employees</Typography>
-              <TrendingFlatIcon />
+              <Link className="link" to="/table">
+                <Typography mr={2}>View current employees</Typography>
+                <TrendingFlatIcon />
+              </Link>
             </Box>
           </Toolbar>
         </AppBar>
