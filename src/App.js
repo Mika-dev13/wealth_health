@@ -6,7 +6,8 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './pages/Home'
-import DenseTable from './pages/Table'
+// import DenseTable from './pages/Table'
+import BasicTable from './pages/Table'
 
 const locale = 'fr'
 
@@ -18,7 +19,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/table" element={<DenseTable />} />
+          {/* <Route path="/table" element={<DenseTable />} /> */}
+          <Route path="/table" element={<BasicTable />} />
         </Routes>
       </div>
     </LocalizationProvider>
