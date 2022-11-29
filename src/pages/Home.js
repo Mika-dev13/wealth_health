@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
   Box,
   Container,
@@ -11,6 +11,7 @@ import { DatePicker } from '@mui/x-date-pickers'
 import dayjs from 'dayjs'
 import states from '../data/states'
 import departments from '../data/department'
+import { EmployeeContext } from '../utilities/EmployeeContext'
 
 const employeeInfos = {
   firstName: '',
@@ -19,13 +20,14 @@ const employeeInfos = {
   startDate: null,
   street: '',
   city: '',
-  state: '',
+  state: null,
   zip: '',
-  department: '',
+  department: null,
 }
 
 function Home() {
   const [values, setValues] = useState(employeeInfos)
+  const { employee, setEmployee } = useContext(EmployeeContext)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -37,9 +39,13 @@ function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(values)
-    console.log(values.dateOfBirth.format('DD/MM/YYYY'))
+    // console.log(values)
+    // console.log(values.dateOfBirth.format('DD/MM/YYYY'))
+    setEmployee(values)
+    setValues(employeeInfos)
   }
+  console.log(employee)
+
   //submision
   //useContext (Recupere un valuer de state Employer (array))
   // Employer tu y ajouter un nouvelle object de donné setEmployer(...Employer, values)
@@ -78,21 +84,30 @@ function Home() {
               name="firstName"
               value={values.firstName}
               onChange={handleInputChange}
+              inputProps={{
+                minLength: 2,
+              }}
+              required
             />
             <TextField
+              required
               id="outlined-basic"
               label="Last name"
               name="lastName"
               variant="outlined"
               value={values.lastName}
               onChange={handleInputChange}
+              inputProps={{
+                minLength: 2,
+              }}
             />
 
             <DatePicker
               label="Date of Birth"
               name="dateOfBith"
-              minDate={dayjs('01-01-1970')}
-              maxDate={dayjs('12-12-2004')}
+              openTo="year"
+              minDate={dayjs().subtract(50, 'year')}
+              maxDate={dayjs().subtract(18, 'year')}
               value={values.dateOfBirth}
               onChange={(newValue) => {
                 setValues({
@@ -100,7 +115,7 @@ function Home() {
                   dateOfBirth: newValue,
                 })
               }}
-              renderInput={(params) => <TextField {...params} />}
+              renderInput={(params) => <TextField {...params} required />}
             />
             <DatePicker
               label="Start Date"
@@ -112,7 +127,7 @@ function Home() {
                   startDate: newValue,
                 })
               }}
-              renderInput={(params) => <TextField {...params} />}
+              renderInput={(params) => <TextField {...params} required />}
             />
           </Box>
           <Box
@@ -123,20 +138,25 @@ function Home() {
             }}
           >
             <TextField
+              required
               id="outlined-basic"
               label="Street"
               name="street"
+              value={values.street}
               onChange={handleInputChange}
             />
             <TextField
+              required
               id="outlined-basic"
               label="City"
               variant="outlined"
               name="city"
+              value={values.city}
               onChange={handleInputChange}
             />
             <Autocomplete
               options={states}
+              value={values.state}
               onChange={(e, value) =>
                 setValues({
                   ...values,
@@ -156,6 +176,7 @@ function Home() {
               )}
               renderInput={(params) => (
                 <TextField
+                  required
                   {...params}
                   label="Choose a states"
                   inputProps={{
@@ -166,9 +187,11 @@ function Home() {
               )}
             />
             <TextField
+              required
               id="outlined-basic"
               label="Zip"
               name="zip"
+              value={values.zip}
               onChange={handleInputChange}
               variant="outlined"
               type="number"
@@ -178,6 +201,7 @@ function Home() {
         <Box padding={'0 8px'} mb={4} mt={1}>
           <Autocomplete
             options={departments}
+            value={values.department}
             onChange={(e, value) =>
               setValues({
                 ...values,
@@ -197,6 +221,7 @@ function Home() {
             )}
             renderInput={(params) => (
               <TextField
+                required
                 {...params}
                 label="Choose a departement"
                 inputProps={{

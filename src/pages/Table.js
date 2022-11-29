@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Container } from '@mui/material'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -7,20 +7,68 @@ import TableContainer from '@mui/material/TableContainer'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import EnhancedTableHead from '../components/TableHead'
+import { EmployeeContext } from '../utilities/EmployeeContext'
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein }
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-]
+// const rows = [
+//   {
+//     id: 1,
+//     firstName: 'Mac',
+//     lastName: 'Clark',
+//     startDate: '12/12/2020',
+//     department: 'Marketing',
+//     dateOfBirth: '12/01/1980',
+//     street: 'les peupliers',
+//     city: 'Marseille',
+//     state: 'BDR',
+//     zip: '13000',
+//   },
+//   {
+//     id: 2,
+//     firstName: 'John',
+//     lastName: 'Doe',
+//     startDate: '12/12/2020',
+//     department: 'Marketing',
+//     dateOfBirth: '12/01/1980',
+//     street: 'les peupliers',
+//     city: 'Marseille',
+//     state: 'BDR',
+//     zip: '13000',
+//   },
+//   {
+//     id: 3,
+//     firstName: 'Melvin',
+//     lastName: 'Stark',
+//     startDate: '12/12/2020',
+//     department: 'Marketing',
+//     dateOfBirth: '12/01/1980',
+//     street: 'les peupliers',
+//     city: 'Marseille',
+//     state: 'BDR',
+//     zip: '13000',
+//   },
+// ]
 
 export default function BasicTable() {
+  const { employee } = useContext(EmployeeContext)
+
+  console.log(employee)
+
+  const rows = [
+    // {
+    //   id: 3,
+    //   firstName: 'Melvin',
+    //   lastName: 'Stark',
+    //   startDate: '12/12/2020',
+    //   department: 'Marketing',
+    //   dateOfBirth: '12/01/1980',
+    //   street: 'les peupliers',
+    //   city: 'Marseille',
+    //   state: 'BDR',
+    //   zip: '13000',
+    // },
+    employee,
+  ]
+
   return (
     <Container
       maxWidth="lg"
@@ -31,28 +79,23 @@ export default function BasicTable() {
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <EnhancedTableHead />
-          {/* <TableHead>
-            <TableRow>
-              {headCells.map((headCell) => (
-                <TableCell key={headCell.id}>
-                  <TableSortLabel>{headCell.label}</TableSortLabel>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead> */}
           <TableBody>
-            {rows.map((row) => (
+            {rows.map((row, index) => (
               <TableRow
-                key={row.name}
+                key={index}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component="th" scope="row">
-                  {row.name}
+                <TableCell component="th" scope="row" variant="head">
+                  {row.lastName}
                 </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell align="right">{row.firstName}</TableCell>
+                <TableCell align="right">{row.startDate}</TableCell>
+                <TableCell align="right">{row.department}</TableCell>
+                <TableCell align="right">{row.dateOfBirth}</TableCell>
+                <TableCell align="right">{row.street}</TableCell>
+                <TableCell align="right">{row.city}</TableCell>
+                <TableCell align="right">{row.state}</TableCell>
+                <TableCell align="right">{row.zip}</TableCell>
               </TableRow>
             ))}
           </TableBody>
