@@ -27,7 +27,7 @@ const employeeInfos = {
 
 function Home() {
   const [values, setValues] = useState(employeeInfos)
-  const { employee, setEmployee } = useContext(EmployeeContext)
+  const { createEmployee } = useContext(EmployeeContext)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -39,17 +39,9 @@ function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log(values)
-    // console.log(values.dateOfBirth.format('DD/MM/YYYY'))
-    setEmployee(values)
     setValues(employeeInfos)
+    createEmployee(values)
   }
-  console.log(employee)
-
-  //submision
-  //useContext (Recupere un valuer de state Employer (array))
-  // Employer tu y ajouter un nouvelle object de donné setEmployer(...Employer, values)
-  // Open Model
 
   return (
     <Container
@@ -106,7 +98,7 @@ function Home() {
               label="Date of Birth"
               name="dateOfBith"
               openTo="year"
-              minDate={dayjs().subtract(50, 'year')}
+              minDate={dayjs().subtract(60, 'year')}
               maxDate={dayjs().subtract(18, 'year')}
               value={values.dateOfBirth}
               onChange={(newValue) => {
@@ -120,6 +112,9 @@ function Home() {
             <DatePicker
               label="Start Date"
               name="startDate"
+              openTo="year"
+              minDate={dayjs().subtract(60, 'year')}
+              maxDate={dayjs()}
               value={values.startDate}
               onChange={(newValue) => {
                 setValues({
