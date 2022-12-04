@@ -12,6 +12,7 @@ import dayjs from 'dayjs'
 import states from '../data/states'
 import departments from '../data/department'
 import { EmployeeContext } from '../utilities/EmployeeContext'
+import DialogAlert from '../components/DialogAlert'
 
 const employeeInfos = {
   firstName: '',
@@ -28,6 +29,7 @@ const employeeInfos = {
 function Home() {
   const [values, setValues] = useState(employeeInfos)
   const { createEmployee } = useContext(EmployeeContext)
+  const [open, setOpen] = useState(false)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -41,6 +43,7 @@ function Home() {
     e.preventDefault()
     setValues(employeeInfos)
     createEmployee(values)
+    setOpen(true)
   }
 
   return (
@@ -228,10 +231,17 @@ function Home() {
           />
         </Box>
         <Box padding={'0 8px'}>
-          <Button type="submit" variant="contained" size="large" fullWidth>
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            color="success"
+            fullWidth
+          >
             Save
           </Button>
         </Box>
+        <DialogAlert open={open} setOpen={setOpen} />
       </form>
     </Container>
   )

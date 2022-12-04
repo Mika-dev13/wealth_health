@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" sx={{ p: 4 }}>
+        <AppBar position="static" sx={{ p: 4 }} color="success">
           <Toolbar component="nav">
             <Typography component="h1" variant="h4" sx={{ flexGrow: 1 }}>
               <Link className="logo-link" to="/">
