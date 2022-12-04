@@ -65,7 +65,7 @@ const headCells = [
   },
 ]
 
-function EnhancedTableHead(props) {
+function EmployeeTableHead(props) {
   const {
     onSelectAllClick,
     order,
@@ -105,4 +105,4 @@ function EnhancedTableHead(props) {
   )
 }
 
-export default EnhancedTableHead
+export default EmployeeTableHead

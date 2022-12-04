@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
+// import React, { useContext } from 'react'
 import { Container } from '@mui/material'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
-import EnhancedTableHead from '../components/TableHead'
-import { EmployeeContext } from '../utilities/EmployeeContext'
+import EmployeeTable from '../components/EmployeeTable.js'
+// import Table from '@mui/material/Table'
+// import TableBody from '@mui/material/TableBody'
+// import TableCell from '@mui/material/TableCell'
+// import TableContainer from '@mui/material/TableContainer'
+// import TableRow from '@mui/material/TableRow'
+// import Paper from '@mui/material/Paper'
+// import EmployeeTableHead from '../components/EmployeeTableHead'
+// import { EmployeeContext } from '../utilities/EmployeeContext'
 
 // const rows = [
 //   {
@@ -48,24 +49,24 @@ import { EmployeeContext } from '../utilities/EmployeeContext'
 //   },
 // ]
 
-export default function BasicTable() {
-  const { employee } = useContext(EmployeeContext)
+export default function TablePage() {
+  // const { employee } = useContext(EmployeeContext)
 
-  console.log(employee)
+  // console.log(employee)
 
-  const rows = employee
+  // const rows = employee
 
-  if (rows) {
-    return (
-      <Container
-        maxWidth="lg"
-        sx={{
-          marginTop: '80px',
-        }}
-      >
-        <TableContainer component={Paper}>
+  return (
+    <Container
+      maxWidth="lg"
+      sx={{
+        marginTop: '80px',
+      }}
+    >
+      <EmployeeTable />
+      {/* <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <EnhancedTableHead />
+            <EmployeeTableHead />
             <TableBody>
               {rows.map((row, index) => (
                 <TableRow
@@ -87,8 +88,7 @@ export default function BasicTable() {
               ))}
             </TableBody>
           </Table>
-        </TableContainer>
-      </Container>
-    )
-  }
+        </TableContainer> */}
+    </Container>
+  )
 }

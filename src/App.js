@@ -6,7 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './pages/Home'
-import BasicTable from './pages/Table'
+import TablePage from './pages/TablePage'
 import { EmployeeProvider } from './utilities/EmployeeContext'
 
 const locale = 'fr'
@@ -20,7 +20,7 @@ function App() {
         <EmployeeProvider>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/table" element={<BasicTable />} />
+            <Route path="/table" element={<TablePage />} />
           </Routes>
         </EmployeeProvider>
       </div>
