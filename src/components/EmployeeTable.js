@@ -119,7 +119,10 @@ function EmployeeTable() {
               </InputAdornment>
             ),
           }}
-          sx={{ margin: '20px', width: '50%' }}
+          sx={{
+            margin: '20px',
+            width: '50%',
+          }}
           onChange={handleSearch}
         />
         <TableContainer>
@@ -158,16 +161,17 @@ function EmployeeTable() {
             </TableBody>
           </Table>
         </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 15]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          sx={{ borderTop: '1px solid #9e9e9e' }}
+        />
       </Paper>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 15]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
     </>
   )
 }

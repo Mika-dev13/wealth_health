@@ -53,6 +53,7 @@ function Home() {
         display: 'flex',
         flexDirection: 'column',
         marginTop: '30px',
+        height: '100vh',
       }}
     >
       <form onSubmit={handleSubmit}>
@@ -231,13 +232,7 @@ function Home() {
           />
         </Box>
         <Box padding={'0 8px'}>
-          <Button
-            type="submit"
-            variant="contained"
-            size="large"
-            color="success"
-            fullWidth
-          >
+          <Button type="submit" variant="contained" size="large" fullWidth>
             Save
           </Button>
         </Box>

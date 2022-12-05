@@ -67,11 +67,11 @@ const headCells = [
 
 function EmployeeTableHead(props) {
   const {
-    onSelectAllClick,
+    // onSelectAllClick,
     order,
     orderBy,
-    numSelected,
-    rowCount,
+    // numSelected,
+    // rowCount,
     onRequestSort,
   } = props
 
