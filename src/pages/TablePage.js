@@ -60,7 +60,7 @@ export default function TablePage() {
     <Container
       maxWidth="lg"
       sx={{
-        marginTop: '80px',
+        marginTop: '30px',
       }}
     >
       <EmployeeTable />

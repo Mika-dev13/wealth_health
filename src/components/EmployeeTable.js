@@ -6,8 +6,11 @@ import {
   TableRow,
   TableCell,
   TablePagination,
+  TextField,
+  InputAdornment,
   Paper,
 } from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
 import { EmployeeContext } from '../utilities/EmployeeContext'
 import EmployeeTableHead from './EmployeeTableHead'
 
@@ -84,9 +87,41 @@ function EmployeeTable() {
     setPage(0)
   }
 
+  const [filterFn, setFilterFn] = useState({
+    fn: (items) => {
+      return items
+    },
+  })
+
+  const handleSearch = (e) => {
+    let target = e.target
+    setFilterFn({
+      fn: (items) => {
+        if (target.value === '') return items
+        else
+          return items.filter((x) =>
+            x.lastName.toLowerCase().includes(target.value)
+          )
+      },
+    })
+  }
+
   return (
     <>
       <Paper sx={{ width: '100%', mb: 2 }}>
+        <TextField
+          label="Search employee"
+          variant="outlined"
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+          sx={{ margin: '20px', width: '50%' }}
+          onChange={handleSearch}
+        />
         <TableContainer>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <EmployeeTableHead
@@ -98,7 +133,8 @@ function EmployeeTable() {
               rowCount={rows.length}
             />
             <TableBody>
-              {rows
+              {filterFn
+                .fn(rows)
                 .sort(getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => (
