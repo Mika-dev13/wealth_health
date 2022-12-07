@@ -6,13 +6,9 @@
 .link {
   text-decoration: none;
   color: white;
-}
-
-.link {
-  display: flex;
-  align-items: center;
   transition: 0.3s ease-in-out;
 }
+
 .link:hover {
-  color: rgb(246, 254, 8);
+  color: hsl(72, 87%, 35%);
 }

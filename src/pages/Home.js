@@ -57,7 +57,7 @@ function Home() {
       }}
     >
       <form onSubmit={handleSubmit}>
-        <Typography align="center" variant="h4" component="h2" mb={5} mt={3}>
+        <Typography align="center" variant="h5" component="h2" mb={5} mt={3}>
           Create Employee
         </Typography>
         <Box

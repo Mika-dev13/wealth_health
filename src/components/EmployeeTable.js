@@ -122,10 +122,11 @@ function EmployeeTable() {
           sx={{
             margin: '20px',
             width: '50%',
+            marginTop: 3,
           }}
           onChange={handleSearch}
         />
-        <TableContainer>
+        <TableContainer sx={{ paddingLeft: 2, paddingRight: 2 }}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <EmployeeTableHead
               //   numSelected={selected.length}

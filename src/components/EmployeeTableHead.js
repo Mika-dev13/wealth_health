@@ -10,16 +10,16 @@ import { visuallyHidden } from '@mui/utils'
 
 const headCells = [
   {
-    id: 'firstName',
+    id: 'lastName',
     numeric: false,
     disablePadding: true,
-    label: 'First Name',
+    label: 'Last Name',
   },
   {
-    id: 'lastName',
+    id: 'firstName',
     numeric: true,
     disablePadding: false,
-    label: 'Last Name',
+    label: 'First Name',
   },
   {
     id: 'startDate',
@@ -84,7 +84,7 @@ function EmployeeTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.id === 'firstName' ? 'left' : 'right'}
+            align={headCell.id === 'lastName' ? 'left' : 'right'}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
