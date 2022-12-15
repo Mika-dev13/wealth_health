@@ -12,7 +12,8 @@ import dayjs from 'dayjs'
 import states from '../data/states'
 import departments from '../data/department'
 import { EmployeeContext } from '../utilities/EmployeeContext'
-import DialogAlert from '../components/DialogAlert'
+import { Modal } from 'modal_project'
+// import DialogAlert from '../components/DialogAlert'
 
 const employeeInfos = {
   firstName: '',
@@ -75,7 +76,7 @@ function Home() {
             }}
           >
             <TextField
-              id="outlined-basic"
+              id="firstName"
               label="First name"
               name="firstName"
               value={values.firstName}
@@ -87,7 +88,7 @@ function Home() {
             />
             <TextField
               required
-              id="outlined-basic"
+              id="lastName"
               label="Last name"
               name="lastName"
               variant="outlined"
@@ -138,7 +139,7 @@ function Home() {
           >
             <TextField
               required
-              id="outlined-basic"
+              id="street"
               label="Street"
               name="street"
               value={values.street}
@@ -146,7 +147,7 @@ function Home() {
             />
             <TextField
               required
-              id="outlined-basic"
+              id="city"
               label="City"
               variant="outlined"
               name="city"
@@ -236,8 +237,15 @@ function Home() {
             Save
           </Button>
         </Box>
-        <DialogAlert open={open} setOpen={setOpen} />
+        {/* <DialogAlert open={open} setOpen={setOpen} /> */}
       </form>
+      {open && (
+        <Modal
+          setOpen={setOpen}
+          text="Successfully created employee !"
+          buttonText="close"
+        />
+      )}
     </Container>
   )
 }
