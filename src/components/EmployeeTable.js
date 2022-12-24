@@ -33,7 +33,6 @@ function getComparator(order, orderBy) {
 function EmployeeTable() {
   const [order, setOrder] = useState('asc')
   const [orderBy, setOrderBy] = useState('calories')
-  //   const [selected, setSelected] = useState([])
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
 
@@ -48,35 +47,6 @@ function EmployeeTable() {
     setOrder(isAsc ? 'desc' : 'asc')
     setOrderBy(property)
   }
-
-  //   const handleSelectAllClick = (event) => {
-  //     if (event.target.checked) {
-  //       const newSelected = rows.map((n) => n.name)
-  //       setSelected(newSelected)
-  //       return
-  //     }
-  //     setSelected([])
-  //   }
-
-  //   const handleClick = (event, name) => {
-  //     const selectedIndex = selected.indexOf(name)
-  //     let newSelected = []
-
-  //     if (selectedIndex === -1) {
-  //       newSelected = newSelected.concat(selected, name)
-  //     } else if (selectedIndex === 0) {
-  //       newSelected = newSelected.concat(selected.slice(1))
-  //     } else if (selectedIndex === selected.length - 1) {
-  //       newSelected = newSelected.concat(selected.slice(0, -1))
-  //     } else if (selectedIndex > 0) {
-  //       newSelected = newSelected.concat(
-  //         selected.slice(0, selectedIndex),
-  //         selected.slice(selectedIndex + 1)
-  //       )
-  //     }
-
-  //     setSelected(newSelected)
-  //   }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
@@ -129,10 +99,8 @@ function EmployeeTable() {
         <TableContainer sx={{ paddingLeft: 2, paddingRight: 2 }}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <EmployeeTableHead
-              //   numSelected={selected.length}
               order={order}
               orderBy={orderBy}
-              //   onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />

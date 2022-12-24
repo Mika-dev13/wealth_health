@@ -84,11 +84,6 @@ export const EmployeeProvider = ({ children }) => {
     console.log(employee, newEmployee)
   }
 
-  // const value = useMemo(
-  //   () => ({ employee, setEmployee }),
-  //   [employee, setEmployee]
-  // )
-
   const value = { employee, createEmployee }
 
   return (

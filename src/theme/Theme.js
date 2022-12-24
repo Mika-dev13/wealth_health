@@ -1,4 +1,3 @@
-// import { lightGreen } from '@mui/material/colors'
 import { createTheme } from '@mui/material'
 
 export const wealthTheme = createTheme({

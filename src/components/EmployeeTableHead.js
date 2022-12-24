@@ -66,14 +66,7 @@ const headCells = [
 ]
 
 function EmployeeTableHead(props) {
-  const {
-    // onSelectAllClick,
-    order,
-    orderBy,
-    // numSelected,
-    // rowCount,
-    onRequestSort,
-  } = props
+  const { order, orderBy, onRequestSort } = props
 
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property)

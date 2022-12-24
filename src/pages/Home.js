@@ -13,7 +13,6 @@ import states from '../data/states'
 import departments from '../data/department'
 import { EmployeeContext } from '../utilities/EmployeeContext'
 import { Modal } from 'modal_project'
-// import DialogAlert from '../components/DialogAlert'
 
 const employeeInfos = {
   firstName: '',
@@ -237,7 +236,6 @@ function Home() {
             Save
           </Button>
         </Box>
-        {/* <DialogAlert open={open} setOpen={setOpen} /> */}
       </form>
       {open && (
         <Modal
