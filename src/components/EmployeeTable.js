@@ -32,13 +32,11 @@ function getComparator(order, orderBy) {
 
 function EmployeeTable() {
   const [order, setOrder] = useState('asc')
-  const [orderBy, setOrderBy] = useState('calories')
+  const [orderBy, setOrderBy] = useState('')
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(5)
 
   const { employee } = useContext(EmployeeContext)
-
-  console.log(employee)
 
   const rows = employee
 

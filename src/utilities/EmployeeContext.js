@@ -6,10 +6,10 @@ export const EmployeeProvider = ({ children }) => {
   const initialState = [
     {
       firstName: 'Melvin',
-      lastName: 'Stark',
+      lastName: 'Simon',
       startDate: '12/12/2020',
       department: 'Legal',
-      dateOfBirth: '12/01/1980',
+      dateOfBirth: '12/01/1970',
       street: 'les peupliers',
       city: 'Paris',
       state: 'Ile de France',
@@ -17,10 +17,10 @@ export const EmployeeProvider = ({ children }) => {
     },
     {
       firstName: 'Mac',
-      lastName: 'Clark',
+      lastName: 'Mc Gregor',
       startDate: '12/12/2020',
       department: 'Sales',
-      dateOfBirth: '12/01/1980',
+      dateOfBirth: '12/01/1985',
       street: 'les peupliers',
       city: 'Marseille',
       state: 'BDR',
@@ -31,7 +31,7 @@ export const EmployeeProvider = ({ children }) => {
       lastName: 'Doe',
       startDate: '12/12/2020',
       department: 'Marketing',
-      dateOfBirth: '12/01/1980',
+      dateOfBirth: '12/01/1972',
       street: 'les peupliers',
       city: 'Lyon',
       state: 'Rhône',
@@ -42,7 +42,7 @@ export const EmployeeProvider = ({ children }) => {
       lastName: 'Stark',
       startDate: '12/12/2020',
       department: 'Legal',
-      dateOfBirth: '12/01/1980',
+      dateOfBirth: '12/01/1983',
       street: 'les peupliers',
       city: 'Paris',
       state: 'Ile de France',
@@ -53,7 +53,7 @@ export const EmployeeProvider = ({ children }) => {
       lastName: 'Clark',
       startDate: '12/12/2020',
       department: 'Sales',
-      dateOfBirth: '12/01/1980',
+      dateOfBirth: '12/01/1987',
       street: 'les peupliers',
       city: 'Marseille',
       state: 'BDR',
@@ -61,10 +61,10 @@ export const EmployeeProvider = ({ children }) => {
     },
     {
       firstName: 'John',
-      lastName: 'Doe',
+      lastName: 'Davis',
       startDate: '12/12/2020',
       department: 'Marketing',
-      dateOfBirth: '12/01/1980',
+      dateOfBirth: '12/01/1978',
       street: 'les peupliers',
       city: 'Lyon',
       state: 'Rhône',
@@ -74,6 +74,10 @@ export const EmployeeProvider = ({ children }) => {
 
   const [employee, setEmployee] = useState(initialState)
 
+  /**
+   * format the data to the right format
+   * @param {Object} newEmployee
+   */
   const createEmployee = (newEmployee) => {
     newEmployee.dateOfBirth = newEmployee.dateOfBirth.format('DD/MM/YYYY')
     newEmployee.startDate = newEmployee.startDate.format('DD/MM/YYYY')
@@ -81,7 +85,6 @@ export const EmployeeProvider = ({ children }) => {
     newEmployee.department = newEmployee.department.department
 
     setEmployee([...employee, newEmployee])
-    console.log(employee, newEmployee)
   }
 
   const value = { employee, createEmployee }
